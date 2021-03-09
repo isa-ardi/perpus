@@ -27,7 +27,7 @@
                             <td><?= $m['menu']; ?></td>
                             <td>
                                 <a href="" class="badge badge-success">edit</a>
-                                <a href="" class="badge badge-danger">delete</a>
+                                <a href="<?= base_url('menu/delete_menu'); ?>/<?=$m['id']?>" onclick="return confirm ('Yakin?')" class="badge badge-danger">delete</a>
                             </td>
                         </tr>
                         <?php $i++; ?>

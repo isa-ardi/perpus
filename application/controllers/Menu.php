@@ -26,6 +26,20 @@ class Menu extends CI_Controller
             redirect('menu');
         }
     }
+    
+    public function delete_menu($id)
+    {
+        $this->db->where('id',$id);
+        $this->db->delete('user_menu');
+        redirect('menu');
+    }
+
+    public function delete_submenu($id)
+    {
+        $this->db->where('id',$id);
+        $this->db->delete('user_sub_menu');
+        redirect('menu/submenu');
+    }
 
     public function submenu()
     {
