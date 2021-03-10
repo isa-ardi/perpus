@@ -38,8 +38,8 @@
                             <td><?= $sm['icon']; ?></td>
                             <td><?= $sm['is_active']; ?></td>
                             <td>
-                                <a href="" data-toggle="modal" data-target="#submenuUpdateModal"data-id="<?=$sm['id']?>" class="badge badge-success edits">edit</a>
-                                <a href="<?= base_url('menu/delete_submenu'); ?>/<?=$sm['id']?>" onclick="return confirm ('Yakin?')" class="badge badge-danger">delete</a>
+                                <a href="" data-toggle="modal" data-target="#submenuUpdateModal" data-id="<?= $sm['id'] ?>" class="badge badge-success edits">edit</a>
+                                <a href="<?= base_url('menu/delete_submenu'); ?>/<?= $sm['id'] ?>" onclick="return confirm ('Yakin?')" class="badge badge-danger">delete</a>
                             </td>
                         </tr>
                         <?php $i++; ?>

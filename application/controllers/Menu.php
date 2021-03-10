@@ -25,10 +25,10 @@ class Menu extends CI_Controller
             redirect('menu');
         }
     }
-    
+
     public function delete_menu($id)
     {
-        $this->db->where('id',$id);
+        $this->db->where('id', $id);
         $this->db->delete('user_menu');
         redirect('menu');
     }
@@ -50,7 +50,7 @@ class Menu extends CI_Controller
             $this->load->view('templates/footer');
         } else {
             $data = ['menu' => $this->input->post('menu')];
-            $this->db->where('id',$id);
+            $this->db->where('id', $id);
             $this->db->update('user_menu', $data);
             $this->session->set_flashdata('menu_message', '<div class="alert alert-success" role="alert">Update menu success!</div>');
             redirect('menu');
@@ -91,10 +91,10 @@ class Menu extends CI_Controller
             redirect('menu/submenu');
         }
     }
-    
+
     public function delete_submenu($id)
     {
-        $this->db->where('id',$id);
+        $this->db->where('id', $id);
         $this->db->delete('user_sub_menu');
         redirect('menu/submenu');
     }
@@ -127,7 +127,7 @@ class Menu extends CI_Controller
                 'icon' => $this->input->post('icon'),
                 'is_active' => $this->input->post('is_active')
             ];
-            $this->db->where('id',$id);
+            $this->db->where('id', $id);
             $this->db->update('user_sub_menu', $data);
             $this->session->set_flashdata('menu_message', '<div class="alert alert-success" role="alert">Update submenu success!</div>');
             redirect('menu/submenu');
@@ -135,10 +135,9 @@ class Menu extends CI_Controller
     }
     public function getSubMenuById()
     {
-        $this->db->where('id',$this->input->post('id'));
+        $this->db->where('id', $this->input->post('id'));
         $data = $this->db->get('user_sub_menu')->result_array();
         echo json_encode($data);
         // echo $this->input->post('id');
     }
-
 }

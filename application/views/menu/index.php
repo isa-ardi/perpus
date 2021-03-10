@@ -23,10 +23,10 @@
                         <tr>
                             <th scope="row"><?= $i; ?></th>
                             <td><?= $m['menu']; ?></td>
-                            
+
                             <td>
-                                <a href="" data-toggle="modal" data-target="#menuUpdateModal"data-id="<?=$m['id']?>"data-menu="<?=$m['menu']?>" class="badge badge-success edit">edit</a>
-                                <a href="<?= base_url('menu/delete_menu'); ?>/<?=$m['id']?>" onclick="return confirm ('Yakin?')" class="badge badge-danger">delete</a>
+                                <a href="" data-toggle="modal" data-target="#menuUpdateModal" data-id="<?= $m['id'] ?>" data-menu="<?= $m['menu'] ?>" class="badge badge-success edit">edit</a>
+                                <a href="<?= base_url('menu/delete_menu'); ?>/<?= $m['id'] ?>" onclick="return confirm ('Yakin?')" class="badge badge-danger">delete</a>
                             </td>
                         </tr>
                         <?php $i++; ?>
