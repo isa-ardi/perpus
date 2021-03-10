@@ -39,7 +39,7 @@
 </div>
 
 <!-- Bootstrap core JavaScript-->
-<script src="<?= base_url('assets/'); ?>vendor/jquery/jquery.min.js"></script>
+<script src="<?= base_url('assets/'); ?>vendor/jquery/jquery.js"></script>
 <script src="<?= base_url('assets/'); ?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 <!-- Core plugin JavaScript-->
@@ -47,6 +47,44 @@
 
 <!-- Custom scripts for all pages-->
 <script src="<?= base_url('assets/'); ?>js/sb-admin-2.min.js"></script>
+
+<script>
+    $(document).on('click','.badge.badge-success.edit',function(){
+        const id = $(this).data("id");
+        const menu = $(this).data("menu");
+        $('form#update').attr('action','<?= base_url('menu/update_menu'); ?>/'+id);
+        $('input#menu').val(menu);
+    });
+</script>
+
+<script>
+    $(document).on('click','.badge.badge-success.edits',function(){
+        const id = $(this).data("id");
+        $('form#updates').attr('action','<?= base_url('menu/update_submenu'); ?>/'+id);
+        // console.log(id);
+        $.ajax({
+            url : "<?=base_url()?>/Menu/getSubMenuById",
+            data : {
+                id : id
+            },
+            type : "POST",
+            dataType : "JSON",
+            success : function(data){
+                $('input[name=title]').val(data[0].title);
+                $('input[name=url]').val(data[0].url);
+                $('select[name=menu_id]').val(data[0].menu_id);
+                $('input[name=icon]').val(data[0].icon)
+                if(data[0].is_active == 1){
+                    $('input[name=is_active]').attr('checked','');
+                }else{
+                    $('input[name=is_active]').removeAttr('checked')
+                }
+
+            }
+        });
+      
+    });
+</script>
 
 </body>
 

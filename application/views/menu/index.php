@@ -6,8 +6,6 @@
 
     <div class="row">
         <div class="col-lg-6">
-            <?= form_error('menu', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
-
             <?= $this->session->flashdata('menu_message'); ?>
 
             <a href="" class="btn btn-primary mb-3" data-toggle="modal" data-target="#menuModal">Add New Menu</a>
@@ -25,8 +23,9 @@
                         <tr>
                             <th scope="row"><?= $i; ?></th>
                             <td><?= $m['menu']; ?></td>
+                            
                             <td>
-                                <a href="" class="badge badge-success">edit</a>
+                                <a href="" data-toggle="modal" data-target="#menuUpdateModal"data-id="<?=$m['id']?>"data-menu="<?=$m['menu']?>" class="badge badge-success edit">edit</a>
                                 <a href="<?= base_url('menu/delete_menu'); ?>/<?=$m['id']?>" onclick="return confirm ('Yakin?')" class="badge badge-danger">delete</a>
                             </td>
                         </tr>
@@ -57,11 +56,38 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <input type="text" class="form-control" id="menu" name="menu" placeholder="Menu Name">
+                        <?= form_error('menu', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary">Add</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="menuUpdateModal" tabindex="-1" aria-labelledby="menuUpdateModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="menuUpdateModalLabel">Update Menu</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="<?= base_url('update_menu'); ?>" id="update" method="POST">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="menu" name="menu" placeholder="Menu Name">
+                        <?= form_error('menu', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Update</button>
                 </div>
             </form>
         </div>
